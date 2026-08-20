@@ -1,0 +1,16 @@
+# Course deliverables and design artifacts.
+# Kept locally for reference and submission — NOT pushed to GitHub.
+
+srs/*
+wbs/*
+gantt/*
+images/*
+
+# Keep the folders themselves so a fresh clone shows where things belong
+!srs/.gitkeep
+!wbs/.gitkeep
+!gantt/.gitkeep
+!images/.gitkeep
+
+# Keep this folder's own README tracked
+!README.md

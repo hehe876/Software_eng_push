@@ -1,0 +1,264 @@
+# Start Here
+
+This is the setup and Git guide. Read it before touching any code. It assumes
+you have never used Git — if that's not you, skim section 3 and move on.
+
+---
+
+## 1. One-time setup
+
+Do this once, on your own machine.
+
+| Tool | Install from | How to verify it worked |
+| --- | --- | --- |
+| Node 20+ | [nodejs.org](https://nodejs.org) | `node -v` prints `v20.x.x` or higher |
+| Git | [git-scm.com](https://git-scm.com) | `git --version` prints a version number |
+| VS Code | [code.visualstudio.com](https://code.visualstudio.com) | it opens |
+
+**Windows users:** use **Git Bash** for every command in this guide, not
+Command Prompt or PowerShell. Git Bash installs alongside Git and understands
+the commands below directly.
+
+Set your identity in Git (once, ever):
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
+```
+
+Make a GitHub account if you don't have one, then send your GitHub username
+to the group chat so you can be added as a collaborator on the repo. You
+cannot push anything until that happens.
+
+---
+
+## 2. Cloning the project
+
+Once you have collaborator access:
+
+```bash
+git clone <repo-url>
+cd smart-travel-assistant
+npm install
+cp .env.example .env      # then paste in the Supabase keys from the group chat
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser. If you see "Setup is working",
+you're done with setup.
+
+---
+
+## 3. The everyday workflow
+
+This is the section you'll come back to. Every change follows the same
+shape:
+
+```
+main ──► your branch ──► commit(s) ──► push ──► Pull Request ──► merge ──► back to main
+```
+
+You never work directly on `main`. You branch off it, do your work, and
+bring it back through a Pull Request (PR).
+
+### 3.1 Start from an up-to-date `main`
+
+```bash
+git checkout main
+git pull
+```
+
+**Why this matters:** `main` on your laptop is a snapshot from whenever you
+last pulled. If a teammate merged something since then, your copy is stale.
+Branching off a stale `main` means your work and theirs diverge more than
+they need to, and you get a messier merge conflict later. Pulling first is
+the single biggest thing that prevents conflicts.
+
+### 3.2 Make your branch
+
+```bash
+git checkout -b feat/x
+```
+
+Use your actual branch name from the ownership table in the main
+`README.md` (e.g. `feat/accounts`, `feat/maps`).
+
+### 3.3 Do the work, then check what changed
+
+```bash
+git status
+```
+
+Shows which files you've touched. Read it before staging anything.
+
+### 3.4 Stage and commit
+
+```bash
+git add <folder-or-file>
+git commit -m "describe what changed"
+```
+
+Add specific files or folders — not `git add .`. A bare `git add .` stages
+everything in the working directory, including files you didn't mean to
+touch (stray config, half-finished experiments, someone else's uncommitted
+edit sitting in the tree). Naming what you add is how you catch that before
+it becomes part of the commit.
+
+Commit messages should say what changed, not restate the filename —
+`"add email validation to signup form"`, not `"update form"`.
+
+### 3.5 Push your branch
+
+```bash
+git push -u origin feat/x
+```
+
+The `-u` only matters the first time you push a given branch — after that,
+plain `git push` remembers where it goes.
+
+### 3.6 Open a Pull Request
+
+Go to the repo on GitHub in your browser. You'll see a yellow banner
+("`feat/x` had recent pushes") with a **Compare & pull request** button — click
+it. If you don't see the banner, go to the **Pull requests** tab and click
+**New pull request**, then pick your branch. Fill in the PR template that
+appears (it's already in the repo — see `.github/pull_request_template.md`),
+and open the PR.
+
+### 3.7 Merge
+
+Once a teammate has looked at it (or you've agreed async review isn't
+needed for something small), click **Merge pull request** on GitHub, then
+**Delete branch**. Back on your machine:
+
+```bash
+git checkout main
+git pull
+```
+
+Now your local `main` has your merged work, and you're ready to branch again
+from step 3.1.
+
+---
+
+## 4. Things that will go wrong
+
+**I started coding on the wrong branch.**
+
+```bash
+git stash
+git checkout correct-branch
+git stash pop
+```
+
+`git stash` sets your uncommitted changes aside so you can switch branches
+cleanly, then `stash pop` brings them back on the branch you actually meant
+to be on.
+
+**Merge conflict.** Git couldn't automatically combine two changes to the
+same lines and needs you to decide. The affected file will contain markers
+like this:
+
+```
+<<<<<<< HEAD
+your version of the line
+=======
+their version of the line
+>>>>>>> feat/their-branch
+```
+
+Edit the file to keep the version you want (or a combination), then delete
+the `<<<<<<<`, `=======`, and `>>>>>>>` marker lines entirely. **Don't guess
+which version is correct on your own** — ask in the group chat. Conflicts
+usually mean two people touched something without coordinating, and the
+person who wrote the other side knows why their version looks the way it
+does.
+
+**Push rejected** (someone else pushed to the same branch, or you're behind):
+
+```bash
+git pull --rebase
+git push
+```
+
+**I want to throw away all my local changes and start over:**
+
+```bash
+git checkout -- .
+```
+
+This is destructive — it discards uncommitted work in the current directory
+with no undo. Only run it when you're sure you want to lose those changes.
+
+**`npm install` fails.** Delete `node_modules/` and `package-lock.json`, then
+run `npm install` again. If it still fails, paste the exact error into the
+group chat — don't guess at fixes.
+
+---
+
+## 5. Cheat sheet
+
+| Task | Command |
+| --- | --- |
+| Get latest `main` | `git checkout main && git pull` |
+| New branch | `git checkout -b feat/x` |
+| See what changed | `git status` |
+| Stage a folder | `git add src/features/x` |
+| Commit | `git commit -m "message"` |
+| Push a new branch | `git push -u origin feat/x` |
+| Push again later | `git push` |
+| Switch branches | `git checkout branch-name` |
+| Set aside uncommitted work | `git stash` |
+| Bring it back | `git stash pop` |
+| Discard uncommitted changes | `git checkout -- .` |
+| Fix a rejected push | `git pull --rebase` |
+
+---
+
+## 6. Where do I go now
+
+| Person | Folder |
+| --- | --- |
+| Vishwa Thangapandiyan | [`team/vishwa/`](team/vishwa/) |
+| Sanjay Sivakumar | [`team/sanjay/`](team/sanjay/) |
+| Santhosh S | [`team/santhosh/`](team/santhosh/) |
+
+Open your folder's `README.md`. It has your tasks. Its `PLANNER.md` has your
+dated checklist.
+
+---
+
+## 7. Loading project context before you work
+
+Do this every time, before you write anything — a task read without the
+requirements behind it produces code that drifts from the SRS.
+
+**For Vishwa and Sanjay (Claude Code):**
+
+> **Step 0 — Load context before you start.** From the repo root, run `claude`. It reads `CLAUDE.md` automatically. Then, in your first message of the session:
+>
+> ```
+> Read these before doing anything:
+> - README.md (what the project is, the stack, the rules)
+> - CLAUDE.md (project context and constraints)
+> - team/<yourname>/README.md (my tasks)
+> - team/<yourname>/PLANNER.md (what is due right now)
+> - db/schema.sql (the frozen database schema)
+> - docs/srs/ (the requirements — check REQ numbers before building)
+>
+> Then tell me which task I should be on based on today's date, and show me
+> the plan before writing any code.
+> ```
+>
+> Do this once per session. Skipping it means your AI writes code against guessed requirements rather than the actual SRS.
+
+**For Santhosh (free tier — no repo access from the chat):**
+
+> **Step 0 — Load context before you start.** Free ChatGPT and Claude cannot read your repo, so the context has to be pasted. Do this once at the start of each new chat:
+>
+> 1. Open `README.md` and copy the sections "What this project is", "What we are honest about", and "Tech stack".
+> 2. Open your own `team/santhosh/README.md` and copy the task you are working on.
+> 3. Open `db/schema.sql` and copy only the tables your feature uses.
+> 4. Paste all three, then your question.
+>
+> `AI-PROMPT-PACK.md` already has this bundled into each prompt, so for the six main tasks you can skip straight to copying the relevant prompt. Use these manual steps for anything the pack does not cover.

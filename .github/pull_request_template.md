@@ -24,6 +24,7 @@ REQ-
 
 - [ ] Only touched my own feature folder
 - [ ] Did not change `db/schema.sql`
-- [ ] `.env` not included in this PR
-- [ ] `npm run dev` runs clean
+- [ ] I did not change any file in `lib/models/`
+- [ ] No `.env` or hardcoded key included in this PR
+- [ ] `flutter run` works and `flutter analyze` reports no errors
 - [ ] Planner updated

@@ -11,13 +11,24 @@ Do this once, on your own machine.
 
 | Tool | Install from | How to verify it worked |
 | --- | --- | --- |
-| Node 20+ | [nodejs.org](https://nodejs.org) | `node -v` prints `v20.x.x` or higher |
+| Flutter SDK | [flutter.dev](https://flutter.dev) (install guide for your OS) | `flutter --version` prints a version number |
 | Git | [git-scm.com](https://git-scm.com) | `git --version` prints a version number |
-| VS Code | [code.visualstudio.com](https://code.visualstudio.com) | it opens |
+| Android Studio, or VS Code + the Flutter extension | [developer.android.com/studio](https://developer.android.com/studio) or [code.visualstudio.com](https://code.visualstudio.com) | it opens, and `flutter doctor` doesn't list it as missing |
+| An Android emulator, or a physical Android phone with USB debugging on | set up inside Android Studio (Device Manager), or on the phone: Settings → About phone → tap "Build number" 7 times → Developer options → USB debugging | `flutter devices` lists at least one device |
 
-**Windows users:** use **Git Bash** for every command in this guide, not
-Command Prompt or PowerShell. Git Bash installs alongside Git and understands
-the commands below directly.
+After installing, run:
+
+```bash
+flutter doctor
+```
+
+Fix anything it flags as a blocking issue before moving on. A warning about
+something you don't need yet (like an iOS toolchain — see the note at the
+bottom of this section) is fine to ignore.
+
+**Windows users:** use **Git Bash** for every Git command in this guide,
+not Command Prompt or PowerShell. Git Bash installs alongside Git and
+understands the commands below directly.
 
 Set your identity in Git (once, ever):
 
@@ -30,6 +41,10 @@ Make a GitHub account if you don't have one, then send your GitHub username
 to the group chat so you can be added as a collaborator on the repo. You
 cannot push anything until that happens.
 
+**iOS note:** building for iOS needs a Mac with Xcode installed. The team is
+Android-first until someone on the team has access to one — don't worry
+about `flutter doctor` complaining about iOS toolchain items.
+
 ---
 
 ## 2. Cloning the project
@@ -39,13 +54,14 @@ Once you have collaborator access:
 ```bash
 git clone <repo-url>
 cd smart-travel-assistant
-npm install
-cp .env.example .env      # then paste in the Supabase keys from the group chat
-npm run dev
+flutter pub get
+flutter run --dart-define=SUPABASE_URL=... --dart-define=SUPABASE_ANON_KEY=...
 ```
 
-Open `http://localhost:5173` in your browser. If you see "Setup is working",
-you're done with setup.
+Fill in the two `--dart-define` values with the real Supabase keys from
+the group chat — see [`RUN.md`](RUN.md) for the exact command and why this
+project doesn't use a `.env` file. If you see "Setup is working" on your
+emulator or device, you're done with setup.
 
 ---
 
@@ -190,9 +206,10 @@ git checkout -- .
 This is destructive — it discards uncommitted work in the current directory
 with no undo. Only run it when you're sure you want to lose those changes.
 
-**`npm install` fails.** Delete `node_modules/` and `package-lock.json`, then
-run `npm install` again. If it still fails, paste the exact error into the
-group chat — don't guess at fixes.
+**`flutter pub get` fails.** Delete the `.dart_tool/` folder and
+`pubspec.lock`, then run `flutter pub get` again. If it still fails, run
+`flutter doctor` to check your setup, and if that's clean too, paste the
+exact error into the group chat — don't guess at fixes.
 
 ---
 
@@ -203,7 +220,7 @@ group chat — don't guess at fixes.
 | Get latest `main` | `git checkout main && git pull` |
 | New branch | `git checkout -b feat/x` |
 | See what changed | `git status` |
-| Stage a folder | `git add src/features/x` |
+| Stage a folder | `git add lib/features/x` |
 | Commit | `git commit -m "message"` |
 | Push a new branch | `git push -u origin feat/x` |
 | Push again later | `git push` |
@@ -212,6 +229,10 @@ group chat — don't guess at fixes.
 | Bring it back | `git stash pop` |
 | Discard uncommitted changes | `git checkout -- .` |
 | Fix a rejected push | `git pull --rebase` |
+| Install/update packages | `flutter pub get` |
+| Run the app | `flutter run --dart-define=... --dart-define=...` (see `RUN.md`) |
+| List connected devices/emulators | `flutter devices` |
+| Check your Flutter setup | `flutter doctor` |
 
 ---
 
@@ -244,6 +265,7 @@ requirements behind it produces code that drifts from the SRS.
 > - team/<yourname>/README.md (my tasks)
 > - team/<yourname>/PLANNER.md (what is due right now)
 > - db/schema.sql (the frozen database schema)
+> - lib/models/CONTRACT.md (the frozen Dart data contract)
 > - docs/srs/ (the requirements — check REQ numbers before building)
 >
 > Then tell me which task I should be on based on today's date, and show me
@@ -259,6 +281,7 @@ requirements behind it produces code that drifts from the SRS.
 > 1. Open `README.md` and copy the sections "What this project is", "What we are honest about", and "Tech stack".
 > 2. Open your own `team/santhosh/README.md` and copy the task you are working on.
 > 3. Open `db/schema.sql` and copy only the tables your feature uses.
-> 4. Paste all three, then your question.
+> 4. Open `lib/models/CONTRACT.md` and copy the class(es) matching those tables.
+> 5. Paste all four, then your question.
 >
 > `AI-PROMPT-PACK.md` already has this bundled into each prompt, so for the six main tasks you can skip straight to copying the relevant prompt. Use these manual steps for anything the pack does not cover.

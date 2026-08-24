@@ -7,6 +7,29 @@ stores a whole new copy of a binary file on every edit and the diffs are
 unreadable anyway. The folder structure itself stays tracked so a fresh
 clone shows where things belong.
 
+## ⚠ These documents describe a web application. The project is now Flutter.
+
+The SRS, DFDs, ER diagram, and UML diagrams in these folders were all
+written before the Flutter decision — they describe a React + Vite web
+app. **The database design inside them survives the pivot unchanged** —
+`db/schema.sql` matches what's in the SRS/ER diagram — but every reference
+to browsers, web hosting, IndexedDB, or a frontend/backend split described
+in web terms is wrong and needs revising before submission, or it will
+contradict the app you actually demo. `PROJECT-UNDERSTANDING.md` at the
+repo root is the current, authoritative description of what's being
+built — it **supersedes the SRS** wherever the two disagree. Read that
+file, not the SRS, if you want to know how the system actually works
+today.
+
+**A specific mismatch to watch for:** the SRS still numbers Emergency's
+REQ-5.2 as directions/routing per the original design, with tap-to-call
+folded elsewhere. In the current docs (`CLAUDE.md`, `team/*/README.md`),
+REQ-5.2 is explicitly "directions inside Emergency" (owned by Sanjay) and
+tap-to-call is grouped under REQ-5.3 with the default helplines. If the
+SRS text you're revising uses a different split, reconcile it against
+`CLAUDE.md`'s ownership table and `lib/models/CONTRACT.md`, not the other
+way around — those two are what the code is actually built against.
+
 | Folder | Contents |
 | --- | --- |
 | `srs/` | The Software Requirements Specification. Source of truth for scope — every feature README and task brief points back to a `REQ-<feature>.<number>` label defined here. |

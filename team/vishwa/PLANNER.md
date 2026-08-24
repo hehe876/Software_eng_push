@@ -8,22 +8,27 @@ that's actually done is as misleading as a ticked item that isn't.
 
 ## Sprint 0 — Aug 24 – Aug 30: Setup
 
-- [ ] Node 20+, Git, VS Code installed and verified (see `START-HERE.md` §1)
-- [ ] Repo cloned, `npm install` run, dev server starts at localhost:5173
+- [ ] Flutter SDK, Git, Android Studio (or VS Code + Flutter extension)
+      installed (see `START-HERE.md` §1)
+- [ ] `flutter doctor` passes with no blocking issues
+- [ ] An emulator or physical Android device running (`flutter devices`
+      shows at least one)
+- [ ] Repo cloned, `flutter pub get` run, app runs via `flutter run` (see
+      `RUN.md` for the required `--dart-define` flags)
 - [ ] GitHub account made, username sent to the group for collaborator access
 - [ ] Create the Supabase project
 - [ ] Run `db/schema.sql` in the Supabase SQL Editor
 - [ ] Run `db/seed.sql` in the Supabase SQL Editor
 - [ ] Post the Supabase URL and anon key to the group chat so Sanjay and
-      Santhosh can fill in their `.env`
-- [ ] `.env` filled in locally from `.env.example`
+      Santhosh can fill in their `--dart-define` flags (see `RUN.md`)
 
 ## Sprint 1 — Aug 31 – Sep 13: Accounts
 
 - [ ] Sign-up screen (email/password)
 - [ ] Google sign-in wired up
 - [ ] `profiles` row created on sign-up (trigger or explicit insert after
-      sign-up — auth.users alone is not enough)
+      sign-up — `auth.users` alone is not enough), using the `UserProfile`
+      model
 - [ ] Profile screen: view/edit full name, default currency, preferences
 - [ ] Supabase auth error codes mapped to human-readable messages
 - [ ] PR opened and merged to `main` — target **13 Sep 2026**
@@ -37,15 +42,20 @@ that's actually done is as misleading as a ticked item that isn't.
 
 ## Sprint 3 — Sep 28 – Oct 18: Maps & Offline
 
-- [ ] Leaflet CSS imported, map renders with visible tiles
-- [ ] Marker icon path fix applied (Vite breaks the default Leaflet icons)
-- [ ] Markers plotted for itinerary stops (`itinerary_items`)
-- [ ] OSM attribution visible on the map
-- [ ] `src/lib/routing.js` built as a plain function, OSRM call working
+- [ ] `flutter_map` set up with an OpenStreetMap tile layer
+- [ ] `INTERNET` permission added to `AndroidManifest.xml` (map stays
+      blank with no error if this is missing)
+- [ ] OSM attribution widget visible on the map
+- [ ] Markers plotted for itinerary stops (`ItineraryItem.latitude`/`.longitude`)
+- [ ] `lib/services/routing_service.dart` built as a plain function, OSRM
+      call working, signature documented in `lib/services/README.md`
+- [ ] `ACCESS_FINE_LOCATION`/`ACCESS_COARSE_LOCATION` permissions added for
+      `geolocator`
 - [ ] Offline download: cached itinerary + guide text + static map image,
-      stored via IndexedDB
-- [ ] `offline_packs` row written on download
-- [ ] Tested offline with DevTools set to Offline (not Wi-Fi off)
+      stored via Hive
+- [ ] `OfflinePack` row written to Supabase on download
+- [ ] Tested offline with the device/emulator in Airplane Mode (not just
+      Wi-Fi off — some emulators keep a loopback connection alive)
 - [ ] PR opened and merged to `main` — target **18 Oct 2026**
 
 ## Sprint 4 — Oct 19 – Nov 1: Integration
@@ -67,12 +77,11 @@ that's actually done is as misleading as a ticked item that isn't.
 
 ## Sprint 6 — Nov 9 – Nov 20: Deploy, docs, viva prep
 
-- [ ] App deployed to hosting (Vercel/Netlify or similar)
-- [ ] Environment variables (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`)
-      set on the host — the deployed build will not read your local `.env`
-- [ ] Google OAuth redirect URL updated in the Supabase dashboard to the
-      deployed domain — **Google sign-in will break in production if this
-      step is skipped**
+- [ ] Release APK built (`flutter build apk` with both `--dart-define`
+      flags — see `RUN.md`)
+- [ ] Google OAuth redirect configured in the Supabase dashboard for the
+      app's actual redirect scheme — **Google sign-in will break on a real
+      device if this step is skipped**
 - [ ] User guide section for Accounts + Maps written
 - [ ] Final report section for Accounts + Maps written
 - [ ] Viva prep: can explain RLS, the auth.users/profiles split, and the

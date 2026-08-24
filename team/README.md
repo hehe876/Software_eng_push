@@ -1,7 +1,8 @@
 # team/
 
 One folder per person. Each has a task brief (`README.md`) and a dated
-checklist (`PLANNER.md`).
+checklist (`PLANNER.md`), written against the Flutter/Dart rebuild — see
+`README.md` and `CLAUDE.md` at the repo root for the current stack.
 
 | Person | Folder | Features | Branches |
 | --- | --- | --- | --- |

@@ -6,9 +6,13 @@ checklist (`PLANNER.md`), written against the Flutter/Dart rebuild — see
 
 | Person | Folder | Features | Branches |
 | --- | --- | --- | --- |
-| Vishwa Thangapandiyan | [`vishwa/`](vishwa/) | Accounts, Maps & Offline | `feat/accounts`, `feat/maps` |
-| Sanjay Sivakumar | [`sanjay/`](sanjay/) | Itinerary, Recommendations | `feat/itinerary`, `feat/recommendations` |
-| Santhosh S | [`santhosh/`](santhosh/) | Budget, Emergency | `feat/budget`, `feat/emergency` |
+| Vishwa Thangapandiyan | [`vishwa/`](vishwa/) | Accounts, Maps & Offline | `flex/accounts`, `flex/maps` |
+| Sanjay Sivakumar | [`sanjay/`](sanjay/) | Itinerary, Recommendations | `flex/itinerary`, `flex/recommendations` |
+| Santhosh S | [`santhosh/`](santhosh/) | Budget, Emergency | `flex/budget`, `flex/emergency` |
+
+Branches are named by feature (`flex/<page-or-feature>`), not by
+contributor — who currently owns versus who is currently implementing a
+feature are documented separately, see [`../docs/OWNERSHIP.md`](../docs/OWNERSHIP.md).
 
 ## What's in each folder
 

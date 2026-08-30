@@ -102,9 +102,13 @@ engineering course project
 
 | Person | Reg. No | Features owned | Branches | AI access |
 | --- | --- | --- | --- | --- |
-| Vishwa Thangapandiyan | 24BCE1415 | Accounts (4.1), Maps & Offline (4.4) | `feat/accounts`, `feat/maps` | Claude Pro |
-| Sanjay Sivakumar | 24BCE1948 | Itinerary (4.2), Recommendations (4.6), REQ-5.2 | `feat/itinerary`, `feat/recommendations` | Claude Pro, possibly Max |
-| Santhosh S | 24BCE5169 | Budget (4.3), Emergency (4.5, minus REQ-5.2) | `feat/budget`, `feat/emergency` | **None — free tier only** |
+| Vishwa Thangapandiyan | 24BCE1415 | Accounts (4.1), Maps & Offline (4.4) | `flex/accounts`, `flex/maps` | Claude Pro |
+| Sanjay Sivakumar | 24BCE1948 | Itinerary (4.2), Recommendations (4.6), REQ-5.2 | `flex/itinerary`, `flex/recommendations` | Claude Pro, possibly Max |
+| Santhosh S | 24BCE5169 | Budget (4.3), Emergency (4.5, minus REQ-5.2) | `flex/budget`, `flex/emergency` | **None — free tier only** |
+
+Branches are named by feature (`flex/<page-or-feature>`), not by
+contributor — see `docs/OWNERSHIP.md` for who currently implements what
+when that differs from the owner listed above.
 
 **Git experience:** Sanjay knows GitHub reasonably. Vishwa and Santhosh
 have never used it.

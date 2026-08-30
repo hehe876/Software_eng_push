@@ -1,6 +1,6 @@
 # Maps, Navigation & Offline Access — REQ-4.1–4.3
 
-Flutter feature folder. Owner: Vishwa · Branch: `feat/maps` · SRS 4.4
+Flutter feature folder. Owner: Vishwa · Branch: `flex/maps` · SRS 4.4
 
 Plots itinerary stops on a map with routing, and lets a trip be downloaded
 for offline use (Hive).

@@ -3,7 +3,7 @@
 Owns: Budget (SRS 4.3, REQ-3.1–3.5), Emergency Assistance (SRS 4.5,
 REQ-5.1, 5.3, 5.4)
 
-Branches: `feat/budget`, `feat/emergency`
+Branches: `flex/budget`, `flex/emergency`
 
 Folders you may edit: `lib/features/budget/`, `lib/features/emergency/`,
 `lib/services/overpass_service.dart`
@@ -11,6 +11,24 @@ Folders you may edit: `lib/features/budget/`, `lib/features/emergency/`,
 **Note on REQ-5.2:** directions inside the Emergency panel is Sanjay's
 task now, not yours — see "Why you have these two features" below. You
 still own the rest of Emergency.
+
+---
+
+## Current implementation note
+
+**Vishwa is currently implementing Budget and Emergency on your behalf**,
+in a Claude Code session, so the team keeps moving on these two features.
+This is an implementation arrangement, not an ownership transfer:
+
+- You remain the **owner** of both features — REQ responsibility (REQ-3.x
+  and REQ-5.1/5.3/5.4) and project credit for them are still yours.
+- `docs/OWNERSHIP.md` is the canonical record of this arrangement (and of
+  Sanjay's REQ-5.2 exception, which works the same way in reverse).
+- Everything below — the task breakdown, the AI prompt pack, the
+  planner — stays accurate reference material for you, whether you're
+  reviewing Vishwa's work, picking up a piece of it yourself, or resuming
+  full implementation later. Nothing here assumes you must personally
+  write every line, and nothing prohibits you from doing so either.
 
 ---
 
@@ -70,7 +88,7 @@ Build the budget setup and expense screens now against hardcoded data in
 a local `List<Budget>` / `List<Expense>`:
 
 ```dart
-// TODO: replace with Supabase query once feat/itinerary is merged
+// TODO: replace with Supabase query once flex/itinerary is merged
 final budgets = [Budget(id: '1', tripId: 'placeholder', category: 'Food', allocatedAmount: 5000)];
 ```
 
@@ -174,3 +192,8 @@ second message when it doesn't quite fit.
 chat for Vishwa or Sanjay to run through their Pro session. This is the
 intended workflow, not a failure — it's specifically why the ground rules
 ask them to check in when you flag a blocker.
+
+See `docs/WORKFLOW.md` for how this fits into the team's shared
+expectations. No specific AI tool or workflow is prescribed for you
+beyond what's documented here and in `docs/OWNERSHIP.md` — this pack and
+the current Vishwa-implementing arrangement can both be true at once.

@@ -168,16 +168,24 @@ shows where things belong. See [`docs/README.md`](docs/README.md).
 ## 5. Ownership and branches
 
 Each person owns two features and works on their own branch. **Only touch
-your own feature folder.**
+your own feature folder** — or a folder you're an authorized implementer
+for, see below.
+
+Branches are named `flex/<page-or-feature>`, not by contributor — the
+name stays the same regardless of who is currently implementing it.
+Current implementer exceptions (e.g. Budget and Emergency currently being
+implemented by Vishwa on Santhosh's behalf) are recorded in
+[`docs/OWNERSHIP.md`](docs/OWNERSHIP.md), the canonical source — ownership
+itself doesn't change because of who's implementing.
 
 | Branch | Owner | Folders they edit |
 | --- | --- | --- |
-| `feat/accounts` | Vishwa | `lib/features/accounts/`, `lib/services/supabase_service.dart` |
-| `feat/maps` | Vishwa | `lib/features/maps/`, `lib/services/routing_service.dart`, `lib/services/location_service.dart` |
-| `feat/itinerary` | Sanjay | `lib/features/itinerary/` |
-| `feat/recommendations` | Sanjay | `lib/features/recommendations/`, plus the REQ-5.2 directions wrapper (see `lib/features/emergency/README.md`) |
-| `feat/budget` | Santhosh | `lib/features/budget/` |
-| `feat/emergency` | Santhosh | `lib/features/emergency/`, `lib/services/overpass_service.dart` |
+| `flex/accounts` | Vishwa | `lib/features/accounts/`, `lib/services/supabase_service.dart` |
+| `flex/maps` | Vishwa | `lib/features/maps/`, `lib/services/routing_service.dart`, `lib/services/location_service.dart` |
+| `flex/itinerary` | Sanjay | `lib/features/itinerary/` |
+| `flex/recommendations` | Sanjay | `lib/features/recommendations/`, plus the REQ-5.2 directions wrapper (see `lib/features/emergency/README.md`) |
+| `flex/budget` | Santhosh | `lib/features/budget/` |
+| `flex/emergency` | Santhosh | `lib/features/emergency/`, `lib/services/overpass_service.dart` |
 
 ## 6. Ground rules
 

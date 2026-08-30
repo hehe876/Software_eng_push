@@ -22,7 +22,7 @@ REQ-
 
 ## Checklist
 
-- [ ] Only touched my own feature folder
+- [ ] Only touched folders I own, or am a recorded implementer for (see `docs/OWNERSHIP.md`)
 - [ ] Did not change `db/schema.sql`
 - [ ] I did not change any file in `lib/models/`
 - [ ] No `.env` or hardcoded key included in this PR

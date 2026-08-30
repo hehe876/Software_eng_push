@@ -23,11 +23,11 @@ that's actually done is as misleading as a ticked item that isn't.
 
 Accounts isn't merged yet — you are **not blocked**. Build against
 hardcoded Dart lists now, swap in real Supabase queries once
-`feat/accounts` lands.
+`flex/accounts` lands.
 
 - [ ] Budget setup screen built against a hardcoded `List<Budget>`
 - [ ] Expense form built against a hardcoded `List<Expense>`
-- [ ] `// TODO: replace with Supabase query once feat/accounts is merged`
+- [ ] `// TODO: replace with Supabase query once flex/accounts is merged`
       comments left on every hardcoded data point
 
 ## Sprint 2 — Sep 14 – Sep 27: Budget

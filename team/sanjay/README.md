@@ -3,7 +3,7 @@
 Owns: Itinerary (SRS 4.2, REQ-2.1–2.4), Recommendations (SRS 4.6, REQ-6.1–6.4),
 **and REQ-5.2** (directions inside Emergency — see below)
 
-Branches: `feat/itinerary`, `feat/recommendations`
+Branches: `flex/itinerary`, `flex/recommendations`
 
 Folders you may edit: `lib/features/itinerary/`,
 `lib/features/recommendations/` (REQ-5.2's wrapper also lives in one of
@@ -69,7 +69,7 @@ Accounts isn't done until Sprint 1 ends. Don't wait — build the itinerary
 screens now against hardcoded data in a local `List<Trip>`:
 
 ```dart
-// TODO: replace with Supabase query once feat/accounts is merged
+// TODO: replace with Supabase query once flex/accounts is merged
 final trips = [Trip(id: '1', userId: 'placeholder', destination: 'Goa', ...)];
 ```
 
@@ -197,3 +197,8 @@ keep sessions scoped to one feature so Claude isn't reasoning about
 multiple branches' state at once. You know Git reasonably well — if
 Vishwa or Santhosh get stuck on something Git-related, you're the one who
 can walk them through it faster than the docs will.
+
+Your model, effort level, and session workflow are your own call — see
+`docs/WORKFLOW.md` for the shared project-wide expectations (repo-aware
+tooling, planning before substantial changes, respecting ownership and
+frozen contracts) versus what's personal to each contributor.

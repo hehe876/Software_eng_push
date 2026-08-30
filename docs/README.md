@@ -7,6 +7,13 @@ stores a whole new copy of a binary file on every edit and the diffs are
 unreadable anyway. The folder structure itself stays tracked so a fresh
 clone shows where things belong.
 
+Two plain-text files live directly under `docs/` and, unlike the
+subfolders above, **are** tracked in git: `OWNERSHIP.md` (canonical
+feature ownership and current-implementer record) and `WORKFLOW.md`
+(shared team workflow expectations versus individual contributor
+tooling). Neither is a course deliverable — both are living project
+documentation.
+
 ## ⚠ These documents describe a web application. The project is now Flutter.
 
 The SRS, DFDs, ER diagram, and UML diagrams in these folders were all

@@ -1,6 +1,10 @@
 # Emergency Assistance — REQ-5.1, 5.3, 5.4
 
-Flutter feature folder. Owner: Santhosh · Branch: `feat/emergency` · SRS 4.5
+Flutter feature folder. Owner: Santhosh · Branch: `flex/emergency` · SRS 4.5
+
+Vishwa is currently implementing this feature on Santhosh's behalf — see
+`docs/OWNERSHIP.md` (canonical). This is an implementation arrangement,
+not an ownership change.
 
 Nearby hospitals and police stations with one-tap calling, plus default
 national helplines.

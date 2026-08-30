@@ -1,5 +1,14 @@
 # AI Prompt Pack
 
+**Current status:** Vishwa is currently implementing Budget and Emergency
+on Santhosh's behalf in a Claude Code session — see
+`team/santhosh/README.md` and `docs/OWNERSHIP.md` (canonical). This pack
+is kept as-is, as fallback/reference material for Santhosh: useful if
+he's reviewing what Vishwa built, picking up a piece of it himself, or
+resuming full implementation later. Nothing here requires Santhosh to
+personally write every step, and nothing prevents him from doing so
+either.
+
 Copy-paste prompts for free-tier ChatGPT or Claude. You don't have a
 subscription, so every message has to count — these are pre-loaded with
 the context a paid, repo-aware tool would read automatically.

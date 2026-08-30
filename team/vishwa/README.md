@@ -2,11 +2,16 @@
 
 Owns: Accounts (SRS 4.1, REQ-1.1–1.4), Maps & Offline (SRS 4.4, REQ-4.1–4.3)
 
-Branches: `feat/accounts`, `feat/maps`
+Branches: `flex/accounts`, `flex/maps`
 
 Folders you may edit: `lib/features/accounts/`,
 `lib/services/supabase_service.dart`, `lib/features/maps/`,
 `lib/services/routing_service.dart`, `lib/services/location_service.dart`
+
+**Currently also implementing:** Santhosh's Budget and Emergency
+(`lib/features/budget/`, `lib/features/emergency/`) on his behalf.
+Ownership stays Santhosh's — this is an implementation arrangement, not
+a transfer. `docs/OWNERSHIP.md` is the canonical record.
 
 ---
 
@@ -135,6 +140,11 @@ scoped to one feature at a time so Claude isn't holding both Accounts and
 Maps context at once. When you hit something gnarly in Maps (routing
 edge cases, offline sync bugs), that's exactly what the Pro budget is for
 — don't ration it the way Santhosh has to.
+
+This is Vishwa's personal workflow, kept here as day-to-day detail —
+`docs/WORKFLOW.md` is the canonical, team-visible version and shows how
+it sits alongside Sanjay's and Santhosh's own arrangements. Nothing below
+is required of anyone else on the team.
 
 ---
 

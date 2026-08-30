@@ -93,11 +93,12 @@ the single biggest thing that prevents conflicts.
 ### 3.2 Make your branch
 
 ```bash
-git checkout -b feat/x
+git checkout -b flex/x
 ```
 
 Use your actual branch name from the ownership table in the main
-`README.md` (e.g. `feat/accounts`, `feat/maps`).
+`README.md` (e.g. `flex/accounts`, `flex/maps`) — branches are named by
+feature, not by contributor.
 
 ### 3.3 Do the work, then check what changed
 
@@ -126,7 +127,7 @@ Commit messages should say what changed, not restate the filename —
 ### 3.5 Push your branch
 
 ```bash
-git push -u origin feat/x
+git push -u origin flex/x
 ```
 
 The `-u` only matters the first time you push a given branch — after that,
@@ -135,7 +136,7 @@ plain `git push` remembers where it goes.
 ### 3.6 Open a Pull Request
 
 Go to the repo on GitHub in your browser. You'll see a yellow banner
-("`feat/x` had recent pushes") with a **Compare & pull request** button — click
+("`flex/x` had recent pushes") with a **Compare & pull request** button — click
 it. If you don't see the banner, go to the **Pull requests** tab and click
 **New pull request**, then pick your branch. Fill in the PR template that
 appears (it's already in the repo — see `.github/pull_request_template.md`),
@@ -180,7 +181,7 @@ like this:
 your version of the line
 =======
 their version of the line
->>>>>>> feat/their-branch
+>>>>>>> flex/their-branch
 ```
 
 Edit the file to keep the version you want (or a combination), then delete
@@ -218,11 +219,11 @@ exact error into the group chat — don't guess at fixes.
 | Task | Command |
 | --- | --- |
 | Get latest `main` | `git checkout main && git pull` |
-| New branch | `git checkout -b feat/x` |
+| New branch | `git checkout -b flex/x` |
 | See what changed | `git status` |
 | Stage a folder | `git add lib/features/x` |
 | Commit | `git commit -m "message"` |
-| Push a new branch | `git push -u origin feat/x` |
+| Push a new branch | `git push -u origin flex/x` |
 | Push again later | `git push` |
 | Switch branches | `git checkout branch-name` |
 | Set aside uncommitted work | `git stash` |

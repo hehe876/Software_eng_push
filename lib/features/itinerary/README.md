@@ -1,6 +1,6 @@
 # Itinerary — REQ-2.1–2.4
 
-Flutter feature folder. Owner: Sanjay · Branch: `feat/itinerary` · SRS 4.2
+Flutter feature folder. Owner: Sanjay · Branch: `flex/itinerary` · SRS 4.2
 
 Create a trip, build a day-wise itinerary, reorder stops.
 

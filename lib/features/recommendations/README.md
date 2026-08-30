@@ -1,6 +1,6 @@
 # Destination Recommendations — REQ-6.1–6.4
 
-Flutter feature folder. Owner: Sanjay · Branch: `feat/recommendations` · SRS 4.6
+Flutter feature folder. Owner: Sanjay · Branch: `flex/recommendations` · SRS 4.6
 
 Suggests places near the trip destination that can be added straight to
 the itinerary. Ranking is a plain database `ORDER BY` — REQ-6.4 makes

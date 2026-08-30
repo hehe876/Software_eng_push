@@ -1,8 +1,16 @@
 # CLAUDE.md
 
-Project context for Claude Code. Grounded in `PROJECT-UNDERSTANDING.md` —
-if anything here and that file disagree, `PROJECT-UNDERSTANDING.md` is
-right and this file is stale. Read that file first if you haven't.
+Project context for Claude Code. Documentation authority, most to least:
+
+1. `PROJECT-UNDERSTANDING.md` — product requirements, agreed
+   functionality, scope, and system behaviour. Wins any disagreement with
+   anything below.
+2. `CLAUDE.md` (this file) — Claude Code-specific hard constraints,
+   architecture rules, ownership boundaries.
+3. Feature READMEs and `team/` docs — feature-specific implementation
+   guidance and project-management detail.
+
+Read `PROJECT-UNDERSTANDING.md` first if you haven't.
 
 ## What this project is
 
@@ -42,8 +50,13 @@ dependencies is a hard rule, not a suggestion.
 ## Hard rules
 
 1. **Stay in your own feature folder.** `lib/features/<name>/` belongs to
-   one owner — see the ownership table below. If something outside your
-   folder needs to change, say so in the group chat first.
+   one owner — see the ownership table below. Ownership and
+   implementation are separate: an owner can have someone else
+   implementing their feature on their behalf, recorded as an exception
+   in `docs/OWNERSHIP.md` (the canonical source — check it before
+   assuming a folder is off-limits). If something outside your folder —
+   and outside any recorded exception — needs to change, say so in the
+   group chat first.
 2. **`db/schema.sql` is FROZEN.** Every table for every feature is already
    in there. A schema change breaks every branch's queries, not just
    yours — get agreement before touching it.
@@ -62,17 +75,29 @@ dependencies is a hard rule, not a suggestion.
    a student explains it in a viva. That means no cleverness for its own
    sake, no abstraction built for a use case that doesn't exist yet, and
    comments only where the *why* isn't obvious from the code itself.
+7. **Do not invent excluded functionality.** See "What does NOT exist"
+   below and `PROJECT-UNDERSTANDING.md` Part 13 — if something is
+   genuinely undecided, leave it flagged as undecided rather than
+   guessing.
 
 ## Feature ownership
 
+Branches use `flex/<page-or-feature>` naming, not contributor names —
+see `docs/WORKFLOW.md`.
+
 | Feature | Folder | REQs | Owner | Branch |
 | --- | --- | --- | --- | --- |
-| Accounts | `lib/features/accounts/` | REQ-1.1–1.4 | Vishwa | `feat/accounts` |
-| Itinerary | `lib/features/itinerary/` | REQ-2.1–2.4 | Sanjay | `feat/itinerary` |
-| Budget | `lib/features/budget/` | REQ-3.1–3.5 | Santhosh | `feat/budget` |
-| Maps & Offline | `lib/features/maps/` | REQ-4.1–4.3 | Vishwa | `feat/maps` |
-| Emergency | `lib/features/emergency/` | REQ-5.1, 5.3, 5.4 | Santhosh | `feat/emergency` |
-| Recommendations | `lib/features/recommendations/` | REQ-6.1–6.4 | Sanjay | `feat/recommendations` |
+| Accounts | `lib/features/accounts/` | REQ-1.1–1.4 | Vishwa | `flex/accounts` |
+| Itinerary | `lib/features/itinerary/` | REQ-2.1–2.4 | Sanjay | `flex/itinerary` |
+| Budget | `lib/features/budget/` | REQ-3.1–3.5 | Santhosh | `flex/budget` |
+| Maps & Offline | `lib/features/maps/` | REQ-4.1–4.3 | Vishwa | `flex/maps` |
+| Emergency | `lib/features/emergency/` | REQ-5.1, 5.3, 5.4 | Santhosh | `flex/emergency` |
+| Recommendations | `lib/features/recommendations/` | REQ-6.1–6.4 | Sanjay | `flex/recommendations` |
+
+Ownership above is fixed and does not change when someone else is
+currently implementing a feature — see `docs/OWNERSHIP.md` for who is
+currently implementing what (e.g. Budget and Emergency are currently
+implemented by Vishwa, on Santhosh's behalf; ownership stays Santhosh's).
 
 **Exception — REQ-5.2 (directions inside Emergency):** owned by Sanjay,
 not Santhosh, even though it lives conceptually inside the Emergency
@@ -83,7 +108,8 @@ Santhosh can't do without repo-aware AI tooling (he's on free tier, no
 Claude Code access). Sanjay builds a self-contained wrapper with a
 documented signature (see `lib/services/README.md`); Santhosh calls it
 from his own Emergency screen like any other service. Santhosh still owns
-the rest of the Emergency UI.
+the rest of the Emergency UI. See `docs/OWNERSHIP.md` for this and the
+Budget/Emergency exception recorded in one place.
 
 ## Build order
 
@@ -102,6 +128,9 @@ Not arbitrary — it's a dependency chain:
                 │
                 └── 6. Recommendations (Sanjay)  — last; REQ-6.4 lets it degrade gracefully
 ```
+
+(Owner labels above are fixed; the current implementer for a step can
+differ from the owner — see `docs/OWNERSHIP.md`.)
 
 ## What does NOT exist — do not invent these
 
@@ -135,3 +164,18 @@ never agreed to:
 Also not decided, so don't build against an assumption either way: what
 happens when someone edits a trip while offline, when cached data should
 expire, and SMS emergency alerts to contacts.
+
+## Claude Code workflow
+
+Claude Code is the repository-aware implementation environment. It may
+use Superpowers, skills, plugins, subagents, MCP, hooks, and
+code-intelligence tooling where appropriate — this file doesn't restate
+what those do. Plan before substantial changes; skip the ceremony for
+small, obvious ones. Never silently override an architecture or
+ownership decision made outside the repo.
+
+Branch/PR naming is `flex/<page-or-feature>`, project-wide, with no
+contributor names in branch or PR titles. See `docs/WORKFLOW.md` for the
+full workflow philosophy, including which parts are project-wide rules
+versus individual contributor tooling choices — specific AI models and
+effort levels are personal preferences, not repository requirements.

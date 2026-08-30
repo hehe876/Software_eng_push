@@ -13,20 +13,20 @@ dependencies:
     sdk: flutter
 
   supabase_flutter: ^2.5.0 # auth + database client
-  flutter_map: ^6.1.0 # map display, reads OpenStreetMap tiles
-  latlong2: ^0.9.1 # coordinate type flutter_map expects
-  geolocator: ^12.0.0 # GPS position from the OS
+  flutter_map: ^8.3.1 # map display, reads OpenStreetMap tiles
+  latlong2: ^0.10.1 # coordinate type flutter_map expects
+  geolocator: ^14.0.3 # GPS position from the OS
   hive: ^2.2.3 # offline local storage
   hive_flutter: ^1.1.0 # Flutter bindings for Hive (init, box lifecycle)
   provider: ^6.1.2 # state management
   url_launcher: ^6.3.0 # tel: links for emergency calling
   http: ^1.2.1 # OSRM / Overpass HTTP calls
-  intl: ^0.19.0 # date formatting
+  intl: ^0.20.3 # date formatting
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
   uses-material-design: true
